@@ -1,17 +1,17 @@
-<div class="wrapper fadeInDown">
-    <div id="formContent">
-      <div class="alert alert-warning" *ngIf='invalidLogin'>{{errorMessage}}</div>
-      <div class="alert alert-success" *ngIf='loginSuccess'>{{successMessage}}</div>
-      <!-- Tabs Titles -->
-      <h3>Login</h3>
-  
-      <!-- Login Form -->
-      <form>
-        <input type="text" id="username" class="fadeIn second" [(ngModel)]="username" name="username" placeholder="username">
-        <input type="password" id="password" class="fadeIn third" [(ngModel)]="password" name="password" placeholder="password">
-        <input type="submit" (click)=handleLogin() class="fadeIn fourth" value="Log In">
-        <a routerLink="/register" class="fadeIn fourth">Register</a>
-      </form>
-  
+<div class="login-form">
+  <h2>Login</h2>
+  <div *ngIf="invalidLogin" class="error-message">{{ errorMessage }}</div>
+  <div *ngIf="loginSuccess" class="success-message">{{ successMessage }}</div>
+  <form (ngSubmit)="handleLogin()">
+    <div>
+      <label>Username:</label>
+      <input type="text" [(ngModel)]="username" name="username" required>
     </div>
-  </div>
+    <div>
+      <label>Password:</label>
+      <input type="password" [(ngModel)]="password" name="password" required>
+    </div>
+    <button type="submit">Login</button>
+    <a href="/register">Register</a> <!-- Register button with the link to /register -->
+  </form>
+</div>
